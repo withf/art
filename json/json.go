@@ -3,7 +3,7 @@ package json
 import (
 	"encoding/json"
 	"errors"
-	slices2 "github.com/withf/art/slices"
+	"github.com/withf/art/slices"
 	"reflect"
 )
 
@@ -38,7 +38,7 @@ func structMarshal(include bool, obj interface{}, names ...string) ([]byte, erro
 	for i := 0; i < v.NumField(); i++ {
 		field := t.Field(i)
 		name := field.Name
-		if include == slices2.Contains(names, name) {
+		if include == slices.Contains(names, name) {
 			tag := field.Tag.Get("json")
 			if tag == "" {
 				tag = name
