@@ -6,6 +6,9 @@ import (
 	"encoding/hex"
 )
 
+/**
+	Encrypt 加密字符串
+ */
 func Encrypt(b []byte) string {
 	mb := md5.Sum(b)
 	sb := sha512.Sum384(mb[:])
