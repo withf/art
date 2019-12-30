@@ -26,8 +26,10 @@ type party struct {
 	done      []context.Handler
 }
 
+// 唯一路由
 var Router = &router{make([]*route, 0), make([]*party, 0), make([]context.Handler, 0), make([]context.Handler, 0)}
 
+// Bind 路由绑定
 func (r *router) Bind(app *iris.Application) {
 	if len(r.before) > 0 {
 		app.Use(r.before...)
@@ -56,6 +58,26 @@ func (r *router) Register(method, path string, handler ...context.Handler) {
 	r.routes = append(r.routes, &route{method, path, handler})
 }
 
+func (r *router) Get(path string, handler ...context.Handler) {
+	r.Register("GET", path, handler...)
+}
+
+func (r *router) Post(path string, handler ...context.Handler) {
+	r.Register("POST", path, handler...)
+}
+
+func (r *router) DELETE(path string, handler ...context.Handler) {
+	r.Register("DELETE", path, handler...)
+}
+
+func (r *router) PUT(path string, handler ...context.Handler) {
+	r.Register("PUT", path, handler...)
+}
+
+func (r *router) PATCH(path string, handler ...context.Handler) {
+	r.Register("PATCH", path, handler...)
+}
+
 func (r *router) Party(path string) *party {
 	p := &party{path, make([]*route, 0), nil, make([]context.Handler, 0), make([]context.Handler, 0)}
 	r.parties = append(r.parties, p)
@@ -72,6 +94,26 @@ func (r *router) Done(handler ...context.Handler) {
 
 func (p *party) Register(method, path string, handler ...context.Handler) {
 	p.routes = append(p.routes, &route{method, path, handler})
+}
+
+func (p *party) Get(path string, handler ...context.Handler) {
+	p.Register("GET", path, handler...)
+}
+
+func (p *party) Post(path string, handler ...context.Handler) {
+	p.Register("POST", path, handler...)
+}
+
+func (p *party) DELETE(path string, handler ...context.Handler) {
+	p.Register("DELETE", path, handler...)
+}
+
+func (p *party) PUT(path string, handler ...context.Handler) {
+	p.Register("PUT", path, handler...)
+}
+
+func (p *party) PATCH(path string, handler ...context.Handler) {
+	p.Register("PATCH", path, handler...)
 }
 
 func (p *party) Party(path string) *party {
