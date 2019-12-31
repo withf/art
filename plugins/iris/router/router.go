@@ -66,15 +66,15 @@ func (r *router) Post(path string, handler ...context.Handler) {
 	r.Register("POST", path, handler...)
 }
 
-func (r *router) DELETE(path string, handler ...context.Handler) {
+func (r *router) Delete(path string, handler ...context.Handler) {
 	r.Register("DELETE", path, handler...)
 }
 
-func (r *router) PUT(path string, handler ...context.Handler) {
+func (r *router) Put(path string, handler ...context.Handler) {
 	r.Register("PUT", path, handler...)
 }
 
-func (r *router) PATCH(path string, handler ...context.Handler) {
+func (r *router) Patch(path string, handler ...context.Handler) {
 	r.Register("PATCH", path, handler...)
 }
 
@@ -104,15 +104,15 @@ func (p *party) Post(path string, handler ...context.Handler) {
 	p.Register("POST", path, handler...)
 }
 
-func (p *party) DELETE(path string, handler ...context.Handler) {
+func (p *party) Delete(path string, handler ...context.Handler) {
 	p.Register("DELETE", path, handler...)
 }
 
-func (p *party) PUT(path string, handler ...context.Handler) {
+func (p *party) Put(path string, handler ...context.Handler) {
 	p.Register("PUT", path, handler...)
 }
 
-func (p *party) PATCH(path string, handler ...context.Handler) {
+func (p *party) Patch(path string, handler ...context.Handler) {
 	p.Register("PATCH", path, handler...)
 }
 
